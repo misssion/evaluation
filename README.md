@@ -77,19 +77,6 @@ df_flows.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -288,19 +275,6 @@ df_flows.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -463,19 +437,6 @@ df_event_log.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -558,19 +519,19 @@ pm4py.view_dfg(_df, _sa, _ea, format="png")
 
 
     
-![png](output_17_0.png)
+![png](./resources/output_17_0.png)
     
 
 
 
     
-![png](output_17_1.png)
+![png](./resources/output_17_1.png)
     
 
 
 
     
-![png](output_17_2.png)
+![png](./resources/output_17_2.png)
     
 
 
@@ -593,7 +554,7 @@ pm4py.visualization.petri_net.visualizer.view(gviz)
 
 
     
-![png](output_19_0.png)
+![png](./resources/output_19_0.png)
     
 
 
@@ -616,7 +577,7 @@ pm4py.visualization.petri_net.visualizer.view(gviz)
 
 
     
-![png](output_21_0.png)
+![png](./resources/output_21_0.png)
     
 
 
@@ -639,7 +600,7 @@ pm4py.visualization.petri_net.visualizer.view(gviz)
 
 
     
-![png](output_23_0.png)
+![png](./resources/output_23_0.png)
     
 
 
@@ -656,7 +617,7 @@ pm4py.view_bpmn(bpmn_model)
 
 
     
-![png](output_25_0.png)
+![png](./resources/output_25_0.png)
     
 
 
@@ -806,11 +767,6 @@ fig.savefig(f"resources/heatmap_flows_{len(event_log)}.svg")
 ```
 
 
-<style type="text/css">
-#T_b297a_row0_col1, #T_b297a_row0_col2, #T_b297a_row1_col3, #T_b297a_row1_col4, #T_b297a_row2_col2 {
-  background-color: lightgreen;
-}
-</style>
 <table id="T_b297a">
   <thead>
     <tr>
@@ -858,7 +814,7 @@ fig.savefig(f"resources/heatmap_flows_{len(event_log)}.svg")
 
 
     
-![png](output_35_1.png)
+![png](./resources/output_35_1.png)
     
 
 
@@ -879,19 +835,6 @@ statistics
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -926,13 +869,13 @@ graphs_visualizer.view(gviz)
 
 
     
-![png](output_38_0.png)
+![png](./resources/output_38_0.png)
     
 
 
 
     
-![png](output_38_1.png)
+![png](./resources/output_38_1.png)
     
 
 
@@ -1019,19 +962,6 @@ df_flows_malicious_dos.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2395,19 +2325,6 @@ df_flows_malicious_sidechannel.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
