@@ -1,4 +1,5 @@
 # Evaluation
+
 ## MISSION - Process Aware Intrusion Detection in IoT Networks
 
 > Intrusion Detection Systems (IDS) allow for detecting malicious activities in organizational networks and hosts. As the Industrial Internet of Things (Industrial IoT) has gained momentum and attackers become process-aware, it elevates the focus on anomaly-based Network Intrusion Detection Systems (NIDS) in IoT. While previous research has primarily concentrated on fortifying SCADA systems with NIDS, keeping track of the latest advancements in resource-efficient messaging (e.g., MQTT, CoAP, and OPC-UA) is paramount. In our work, we straightforwardly derive IoT processes for NIDS using distributed tracing and process mining. We introduce a pioneering framework called MISSION which effectively captures, consolidates, and models MQTT flows, leading to a heightened process awareness in NIDS. Through our prototypical implementation, we demonstrate exceptional performance and high-quality models. Moreover, our experiments provide empirical evidence for rediscovering pre-defined processes and successfully detecting two distinct MQTT attacks in a simulated IoT network. 
@@ -72,7 +73,7 @@ for broker_key in mqtt_brokers:
 
 
 ```python
-df_flows = pd.read_csv(filename, nrows=file_lines)
+df_flows = pd.read_csv(filename)
 df_flows.head()
 ```
 
@@ -118,7 +119,7 @@ df_flows.head()
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>livingroom-sensor-temperature</td>
+      <td>log_server-sensor-temperature</td>
       <td>Unknown client, probably a broker.</td>
       <td>NaN</td>
     </tr>
@@ -137,7 +138,7 @@ df_flows.head()
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>kitchen-sensor-temperature</td>
+      <td>belt_circulation-sensor-temperature</td>
       <td>Unknown client, probably a broker.</td>
       <td>NaN</td>
     </tr>
@@ -152,11 +153,11 @@ df_flows.head()
       <td>[1663766799,4193241088]</td>
       <td>[1663766799,4195409920]</td>
       <td>1</td>
-      <td>mind2/livingroom-sensor-temperature</td>
+      <td>mind2/log_server-sensor-temperature</td>
       <td>1</td>
       <td>2</td>
       <td>3</td>
-      <td>livingroom-sensor-temperature</td>
+      <td>log_server-sensor-temperature</td>
       <td>Unknown client, probably a broker.</td>
       <td>06857822-39b1-11ed-a47e-3be7a6e67cf0</td>
     </tr>
@@ -175,7 +176,7 @@ df_flows.head()
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>bathroom-sensor-temperature</td>
+      <td>cleaning_system-sensor-temperature</td>
       <td>Unknown client, probably a broker.</td>
       <td>NaN</td>
     </tr>
@@ -190,11 +191,11 @@ df_flows.head()
       <td>[1663766799,4200988672]</td>
       <td>[1663766799,4203681792]</td>
       <td>1</td>
-      <td>mission/kitchen-sensor-temperature</td>
+      <td>mission/belt_circulation-sensor-temperature</td>
       <td>1</td>
       <td>2</td>
       <td>3</td>
-      <td>kitchen-sensor-temperature</td>
+      <td>belt_circulation-sensor-temperature</td>
       <td>Unknown client, probably a broker.</td>
       <td>0685c91c-39b1-11ed-a47e-3be7a6e67cf0</td>
     </tr>
@@ -316,7 +317,7 @@ df_flows.head()
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>livingroom-sensor-temperature</td>
+      <td>log_server-sensor-temperature</td>
       <td>MQTT Broker</td>
       <td>no correlation</td>
     </tr>
@@ -335,7 +336,7 @@ df_flows.head()
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>kitchen-sensor-temperature</td>
+      <td>belt_circulation-sensor-temperature</td>
       <td>MQTT Broker</td>
       <td>no correlation</td>
     </tr>
@@ -350,11 +351,11 @@ df_flows.head()
       <td>2022-09-21 15:26:39.419324</td>
       <td>2022-09-21 15:26:39.419541</td>
       <td>1</td>
-      <td>mind2/livingroom-sensor-temperature</td>
+      <td>mind2/log_server-sensor-temperature</td>
       <td>1</td>
       <td>2</td>
       <td>3</td>
-      <td>livingroom-sensor-temperature</td>
+      <td>log_server-sensor-temperature</td>
       <td>MQTT Broker</td>
       <td>06857822-39b1-11ed-a47e-3be7a6e67cf0</td>
     </tr>
@@ -373,7 +374,7 @@ df_flows.head()
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>bathroom-sensor-temperature</td>
+      <td>cleaning_system-sensor-temperature</td>
       <td>MQTT Broker</td>
       <td>no correlation</td>
     </tr>
@@ -388,11 +389,11 @@ df_flows.head()
       <td>2022-09-21 15:26:39.420099</td>
       <td>2022-09-21 15:26:39.420368</td>
       <td>1</td>
-      <td>mission/kitchen-sensor-temperature</td>
+      <td>mission/belt_circulation-sensor-temperature</td>
       <td>1</td>
       <td>2</td>
       <td>3</td>
-      <td>kitchen-sensor-temperature</td>
+      <td>belt_circulation-sensor-temperature</td>
       <td>MQTT Broker</td>
       <td>0685c91c-39b1-11ed-a47e-3be7a6e67cf0</td>
     </tr>
@@ -455,36 +456,36 @@ df_event_log.head()
       <th>0</th>
       <td>2022-09-21 15:26:39.419324</td>
       <td>06857822-39b1-11ed-a47e-3be7a6e67cf0</td>
-      <td>livingroom-sensor-temperature</td>
-      <td>livingroom-sensor-temperature → \nmind2/living...</td>
+      <td>log_server-sensor-temperature</td>
+      <td>log_server-sensor-temperature → \nmind2/log_se...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2022-09-21 15:26:39.420099</td>
       <td>0685c91c-39b1-11ed-a47e-3be7a6e67cf0</td>
-      <td>kitchen-sensor-temperature</td>
-      <td>kitchen-sensor-temperature → \nmission/kitchen...</td>
+      <td>belt_circulation-sensor-temperature</td>
+      <td>belt_circulation-sensor-temperature → \nmissio...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2022-09-21 15:26:39.420679</td>
       <td>0685ffd6-39b1-11ed-a47e-3be7a6e67cf0</td>
-      <td>bathroom-sensor-temperature</td>
-      <td>bathroom-sensor-temperature → \nmission/bathro...</td>
+      <td>cleaning_system-sensor-temperature</td>
+      <td>cleaning_system-sensor-temperature → \nmission...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2022-09-21 15:26:39.422263</td>
       <td>06868e1a-39b1-11ed-a47e-3be7a6e67cf0</td>
-      <td>garden1-sensor-temperature</td>
-      <td>garden1-sensor-temperature → \nmission/garden1...</td>
+      <td>test_system1-sensor-temperature</td>
+      <td>test_system1-sensor-temperature → \nmission/te...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2022-09-21 15:26:39.422987</td>
       <td>0686c8bc-39b1-11ed-a47e-3be7a6e67cf0</td>
-      <td>garden2-sensor-temperature</td>
-      <td>garden2-sensor-temperature → \nmission/garden2...</td>
+      <td>test_system2-sensor-temperature</td>
+      <td>test_system2-sensor-temperature → \nmission/te...</td>
     </tr>
   </tbody>
 </table>
@@ -678,24 +679,24 @@ evaluate_petri_net("inductive miner", event_log, im_net, im_im, im_fm)
 ```
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/113 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/133 [00:00<?, ?it/s]
 
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/181 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/206 [00:00<?, ?it/s]
 
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/113 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/133 [00:00<?, ?it/s]
 
 
     C:\Users\mail\anaconda3\lib\site-packages\pm4py\util\lp\variants\scipy_solver.py:26: OptimizeWarning: A_eq does not appear to be of full row rank. To improve performance, check the problem formulation for redundant equality constraints.
       sol = linprog(c, A_ub=Aub, b_ub=bub, A_eq=Aeq, b_eq=beq, method="revised simplex")
     
 
-    Fitness: 92.7302%
-    Precision: 99.9927%
-    Generalization: 93.8892%
+    Fitness: 92.7241%
+    Precision: 100.0%
+    Generalization: 96.4323%
     Simplicity: 53.3333%
     Soundness: True
     
@@ -708,22 +709,22 @@ evaluate_petri_net("heuristic miner", event_log, hm_net, hm_im, hm_fm)
 ```
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/113 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/133 [00:00<?, ?it/s]
 
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/181 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/206 [00:00<?, ?it/s]
 
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/113 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/133 [00:00<?, ?it/s]
 
 
-    Fitness: 8.2662%
-    Precision: 99.9867%
-    Generalization: 95.636%
-    Simplicity: 69.5652%
-    Soundness: False
+    Fitness: 8.3123%
+    Precision: 100.0%
+    Generalization: 93.4029%
+    Simplicity: 65.2174%
+    Soundness: True
     
 
 ### (4.3) Alpha Miner
@@ -734,21 +735,21 @@ evaluate_petri_net("alpha miner", event_log, am_net, am_im, am_fm)
 ```
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/113 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/133 [00:00<?, ?it/s]
 
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/181 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/206 [00:00<?, ?it/s]
 
 
 
-    replaying log with TBR, completed variants ::   0%|          | 0/113 [00:00<?, ?it/s]
+    replaying log with TBR, completed variants ::   0%|          | 0/133 [00:00<?, ?it/s]
 
 
-    Fitness: 83.762%
-    Precision: 99.9927%
-    Generalization: 93.4878%
-    Simplicity: 46.087%
+    Fitness: 83.6878%
+    Precision: 100.0%
+    Generalization: 96.1403%
+    Simplicity: 45.2991%
     Soundness: False
     
 
@@ -770,45 +771,50 @@ fig.savefig(f"resources/heatmap_flows_{len(event_log)}.svg")
 ```
 
 
-<table id="T_b297a">
+<style type="text/css">
+#T_91cf6_row0_col1, #T_91cf6_row0_col2, #T_91cf6_row0_col3, #T_91cf6_row1_col2, #T_91cf6_row1_col4, #T_91cf6_row2_col2 {
+  background-color: lightgreen;
+}
+</style>
+<table id="T_91cf6">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_b297a_level0_col0" class="col_heading level0 col0" >Miner</th>
-      <th id="T_b297a_level0_col1" class="col_heading level0 col1" >Fitness</th>
-      <th id="T_b297a_level0_col2" class="col_heading level0 col2" >Precision</th>
-      <th id="T_b297a_level0_col3" class="col_heading level0 col3" >Generalization</th>
-      <th id="T_b297a_level0_col4" class="col_heading level0 col4" >Simplicity</th>
-      <th id="T_b297a_level0_col5" class="col_heading level0 col5" >Soundness</th>
+      <th id="T_91cf6_level0_col0" class="col_heading level0 col0" >Miner</th>
+      <th id="T_91cf6_level0_col1" class="col_heading level0 col1" >Fitness</th>
+      <th id="T_91cf6_level0_col2" class="col_heading level0 col2" >Precision</th>
+      <th id="T_91cf6_level0_col3" class="col_heading level0 col3" >Generalization</th>
+      <th id="T_91cf6_level0_col4" class="col_heading level0 col4" >Simplicity</th>
+      <th id="T_91cf6_level0_col5" class="col_heading level0 col5" >Soundness</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_b297a_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_b297a_row0_col0" class="data row0 col0" >Inductive Miner</td>
-      <td id="T_b297a_row0_col1" class="data row0 col1" >92.730200</td>
-      <td id="T_b297a_row0_col2" class="data row0 col2" >99.992700</td>
-      <td id="T_b297a_row0_col3" class="data row0 col3" >93.889200</td>
-      <td id="T_b297a_row0_col4" class="data row0 col4" >53.333300</td>
-      <td id="T_b297a_row0_col5" class="data row0 col5" >True</td>
+      <th id="T_91cf6_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_91cf6_row0_col0" class="data row0 col0" >Inductive Miner</td>
+      <td id="T_91cf6_row0_col1" class="data row0 col1" >92.724100</td>
+      <td id="T_91cf6_row0_col2" class="data row0 col2" >100.000000</td>
+      <td id="T_91cf6_row0_col3" class="data row0 col3" >96.432300</td>
+      <td id="T_91cf6_row0_col4" class="data row0 col4" >53.333300</td>
+      <td id="T_91cf6_row0_col5" class="data row0 col5" >True</td>
     </tr>
     <tr>
-      <th id="T_b297a_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_b297a_row1_col0" class="data row1 col0" >Heuristic Miner</td>
-      <td id="T_b297a_row1_col1" class="data row1 col1" >8.266200</td>
-      <td id="T_b297a_row1_col2" class="data row1 col2" >99.986700</td>
-      <td id="T_b297a_row1_col3" class="data row1 col3" >95.636000</td>
-      <td id="T_b297a_row1_col4" class="data row1 col4" >69.565200</td>
-      <td id="T_b297a_row1_col5" class="data row1 col5" >False</td>
+      <th id="T_91cf6_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_91cf6_row1_col0" class="data row1 col0" >Heuristic Miner</td>
+      <td id="T_91cf6_row1_col1" class="data row1 col1" >8.312300</td>
+      <td id="T_91cf6_row1_col2" class="data row1 col2" >100.000000</td>
+      <td id="T_91cf6_row1_col3" class="data row1 col3" >93.402900</td>
+      <td id="T_91cf6_row1_col4" class="data row1 col4" >65.217400</td>
+      <td id="T_91cf6_row1_col5" class="data row1 col5" >True</td>
     </tr>
     <tr>
-      <th id="T_b297a_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_b297a_row2_col0" class="data row2 col0" >Alpha Miner</td>
-      <td id="T_b297a_row2_col1" class="data row2 col1" >83.762000</td>
-      <td id="T_b297a_row2_col2" class="data row2 col2" >99.992700</td>
-      <td id="T_b297a_row2_col3" class="data row2 col3" >93.487800</td>
-      <td id="T_b297a_row2_col4" class="data row2 col4" >46.087000</td>
-      <td id="T_b297a_row2_col5" class="data row2 col5" >False</td>
+      <th id="T_91cf6_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_91cf6_row2_col0" class="data row2 col0" >Alpha Miner</td>
+      <td id="T_91cf6_row2_col1" class="data row2 col1" >83.687800</td>
+      <td id="T_91cf6_row2_col2" class="data row2 col2" >100.000000</td>
+      <td id="T_91cf6_row2_col3" class="data row2 col3" >96.140300</td>
+      <td id="T_91cf6_row2_col4" class="data row2 col4" >45.299100</td>
+      <td id="T_91cf6_row2_col5" class="data row2 col5" >False</td>
     </tr>
   </tbody>
 </table>
@@ -850,9 +856,9 @@ statistics
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.00185</td>
-      <td>0.3189</td>
-      <td>0.3189</td>
+      <td>0.00134</td>
+      <td>0.31931</td>
+      <td>0.31931</td>
     </tr>
   </tbody>
 </table>
@@ -980,36 +986,36 @@ df_flows_malicious_dos.head()
       <th>0</th>
       <td>2022-09-21 15:26:40.114727</td>
       <td>1</td>
-      <td>livingroom-temperature-sensor</td>
-      <td>livingroom-temperature-sensor → \nmission/gard...</td>
+      <td>log_server-temperature-sensor</td>
+      <td>log_server-temperature-sensor → \nmission/test...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2022-09-21 15:26:41.114727</td>
       <td>2</td>
-      <td>livingroom-temperature-sensor</td>
-      <td>livingroom-temperature-sensor → \nmission/gard...</td>
+      <td>log_server-temperature-sensor</td>
+      <td>log_server-temperature-sensor → \nmission/test...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2022-09-21 15:26:43.114727</td>
       <td>3</td>
-      <td>livingroom-temperature-sensor</td>
-      <td>livingroom-temperature-sensor → \nmission/gard...</td>
+      <td>log_server-temperature-sensor</td>
+      <td>log_server-temperature-sensor → \nmission/test...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2022-09-21 15:26:44.114727</td>
       <td>4</td>
-      <td>livingroom-temperature-sensor</td>
-      <td>livingroom-temperature-sensor → \nmission/gard...</td>
+      <td>log_server-temperature-sensor</td>
+      <td>log_server-temperature-sensor → \nmission/test...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2022-09-21 15:26:45.114727</td>
       <td>5</td>
-      <td>livingroom-temperature-sensor</td>
-      <td>livingroom-temperature-sensor → \nmission/gard...</td>
+      <td>log_server-temperature-sensor</td>
+      <td>log_server-temperature-sensor → \nmission/test...</td>
     </tr>
   </tbody>
 </table>
@@ -1032,1216 +1038,1216 @@ conformance_tbr(event_log_malicious_dos, am_net, am_im, am_fm)
 
     
     ########################## REPLAYED TRACES ##############################
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
     
 
 ### (5.1.2.2) Alignments
@@ -2255,28 +2261,28 @@ conformance_alignment(event_log_malicious_dos, am_net, am_im, am_fm)
     aligning log, completed variants ::   0%|          | 0/2 [00:00<?, ?it/s]
 
 
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 20000, 'visited_states': 2, 'queued_states': 29, 'traversed_arcs': 29, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
-    {'alignment': [('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('>>', 'main-sensor-door → \nmission/main-sensor-door'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>'), ('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', '>>')], 'cost': 210000, 'visited_states': 21, 'queued_states': 75, 'traversed_arcs': 75, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 210000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature')], 'cost': 20000, 'visited_states': 2, 'queued_states': 55, 'traversed_arcs': 55, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 20000}
+    {'alignment': [('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>'), ('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', '>>')], 'cost': 210000, 'visited_states': 21, 'queued_states': 48, 'traversed_arcs': 48, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 210000}
     
 
 ## (5.1.3) Declarative conformance checking
@@ -2289,27 +2295,27 @@ conformance_log_skeleton(event_log_malicious_dos)
 ```
 
     Anomalies:
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
-    {'deviations': [('always_after', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),)), ('always_before', (('livingroom-temperature-sensor → \nmission/garden2-sensor-motion', 'livingroom-temperature-sensor → \nmission/garden2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
+    {'deviations': [('always_after', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),)), ('always_before', (('log_server-temperature-sensor → \nmission/test_system2-sensor-motion', 'log_server-temperature-sensor → \nmission/test_system2-sensor-motion'),))], 'no_dev_total': 2, 'no_constr_total': 3, 'dev_fitness': 0.33333333333333337, 'is_fit': False}
     
 
 ## (5.2) Scenario 2: Sidechannel attack with different correlation identifier
@@ -2344,35 +2350,35 @@ df_flows_malicious_sidechannel.head()
       <td>2022-09-21 15:26:39.420099</td>
       <td>1</td>
       <td>MQTT Broker</td>
-      <td>MQTT Broker → \nmission/kitchen-sensor-tempera...</td>
+      <td>MQTT Broker → \nmission/belt_circulation-senso...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2022-09-21 15:26:39.420099</td>
       <td>1</td>
       <td>MQTT Broker</td>
-      <td>MQTT Broker → \nmission/kitchen-sensor-tempera...</td>
+      <td>MQTT Broker → \nmission/belt_circulation-senso...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2022-09-21 15:26:39.420099</td>
       <td>1</td>
       <td>MQTT Broker</td>
-      <td>MQTT Broker → \nmission/kitchen-sensor-tempera...</td>
+      <td>MQTT Broker → \nmission/belt_circulation-senso...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2022-09-21 15:26:39.420099</td>
       <td>1</td>
       <td>MQTT Broker</td>
-      <td>MQTT Broker → \nmission/kitchen-sensor-tempera...</td>
+      <td>MQTT Broker → \nmission/belt_circulation-senso...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2022-09-21 15:26:39.420099</td>
       <td>1</td>
       <td>MQTT Broker</td>
-      <td>MQTT Broker → \nmission/kitchen-sensor-tempera...</td>
+      <td>MQTT Broker → \nmission/belt_circulation-senso...</td>
     </tr>
   </tbody>
 </table>
@@ -2391,61 +2397,61 @@ conformance_tbr(event_log_malicious_sidechannel, am_net, am_im, am_fm)
 
     
     ########################## REPLAYED TRACES ##############################
-    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector, 'bathroom-sensor-smokedetector → 
-    mission/bathroom-sensor-smokedetector'), (kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector, 'kitchen-sensor-smokedetector → 
-    mission/kitchen-sensor-smokedetector'), (livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mind2/livingroom-sensor-temperature'), (livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window, 'livingroom3-sensor-window → 
-    mission/livingroom3-sensor-window'), (kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window, 'kitchen1-sensor-window → 
-    mission/kitchen1-sensor-window'), (kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window, 'kitchen2-sensor-window → 
-    mission/kitchen2-sensor-window'), (bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window, 'bathroom1-sensor-window → 
-    mission/bathroom1-sensor-window'), (livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector, 'livingroom-sensor-smokedetector → 
-    mission/livingroom-sensor-smokedetector'), (garage-sensor-door → 
-    mission/garage-sensor-door, 'garage-sensor-door → 
-    mission/garage-sensor-door'), (garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector, 'garage-sensor-smokedetector → 
-    mission/garage-sensor-smokedetector'), (garden1-sensor-motion → 
-    mission/garden1-sensor-motion, 'garden1-sensor-motion → 
-    mission/garden1-sensor-motion'), (garden3-sensor-motion → 
-    mission/garden3-sensor-motion, 'garden3-sensor-motion → 
-    mission/garden3-sensor-motion'), (kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature, 'kitchen-sensor-temperature → 
-    mission/kitchen-sensor-temperature'), (livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature, 'livingroom-sensor-temperature → 
-    mission/livingroom-sensor-temperature'), (livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window, 'livingroom1-sensor-window → 
-    mission/livingroom1-sensor-window'), (main-sensor-door → 
+    {'trace_is_fit': False, 'trace_fitness': 0.0, 'activated_transitions': [], 'reached_marking': ['start:1'], 'enabled_transitions_in_marking': {(log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mission/log_server-sensor-temperature'), (log_server3-sensor-window → 
+    mission/log_server3-sensor-window, 'log_server3-sensor-window → 
+    mission/log_server3-sensor-window'), (test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion, 'test_system1-sensor-motion → 
+    mission/test_system1-sensor-motion'), (test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion, 'test_system2-sensor-motion → 
+    mission/test_system2-sensor-motion'), (pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door, 'pcs_server-sensor-door → 
+    mission/pcs_server-sensor-door'), (test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature, 'test_system1-sensor-temperature → 
+    mission/test_system1-sensor-temperature'), (belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature, 'belt_circulation-sensor-temperature → 
+    mission/belt_circulation-sensor-temperature'), (log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector, 'log_server-sensor-smokedetector → 
+    mission/log_server-sensor-smokedetector'), (log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature, 'log_server-sensor-temperature → 
+    mind2/log_server-sensor-temperature'), (test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature, 'test_system2-sensor-temperature → 
+    mission/test_system2-sensor-temperature'), (belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion, 'belt_circulation-sensor-motion → 
+    mission/belt_circulation-sensor-motion'), (belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window, 'belt_circulation2-sensor-window → 
+    mission/belt_circulation2-sensor-window'), (belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector, 'belt_circulation-sensor-smokedetector → 
+    mission/belt_circulation-sensor-smokedetector'), (pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window, 'pcs_server-sensor-window → 
+    mission/pcs_server-sensor-window'), (cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion, 'cleaning_system-sensor-motion → 
+    mission/cleaning_system-sensor-motion'), (log_server1-sensor-window → 
+    mission/log_server1-sensor-window, 'log_server1-sensor-window → 
+    mission/log_server1-sensor-window'), (log_server2-sensor-window → 
+    mission/log_server2-sensor-window, 'log_server2-sensor-window → 
+    mission/log_server2-sensor-window'), (pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector, 'pcs_server-sensor-smokedetector → 
+    mission/pcs_server-sensor-smokedetector'), (test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion, 'test_system3-sensor-motion → 
+    mission/test_system3-sensor-motion'), (belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window, 'belt_circulation1-sensor-window → 
+    mission/belt_circulation1-sensor-window'), (cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector, 'cleaning_system-sensor-smokedetector → 
+    mission/cleaning_system-sensor-smokedetector'), (log_server-sensor-motion → 
+    mission/log_server-sensor-motion, 'log_server-sensor-motion → 
+    mission/log_server-sensor-motion'), (test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature, 'test_system3-sensor-temperature → 
+    mission/test_system3-sensor-temperature'), (pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion, 'pcs_server-sensor-motion → 
+    mission/pcs_server-sensor-motion'), (cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature, 'cleaning_system-sensor-temperature → 
+    mission/cleaning_system-sensor-temperature'), (cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window, 'cleaning_system1-sensor-window → 
+    mission/cleaning_system1-sensor-window'), (main-sensor-door → 
     mission/main-sensor-door, 'main-sensor-door → 
-    mission/main-sensor-door'), (garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature, 'garden1-sensor-temperature → 
-    mission/garden1-sensor-temperature'), (garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature, 'garden2-sensor-temperature → 
-    mission/garden2-sensor-temperature'), (livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion, 'livingroom-sensor-motion → 
-    mission/livingroom-sensor-motion'), (livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window, 'livingroom2-sensor-window → 
-    mission/livingroom2-sensor-window'), (garage-sensor-window → 
-    mission/garage-sensor-window, 'garage-sensor-window → 
-    mission/garage-sensor-window'), (kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion, 'kitchen-sensor-motion → 
-    mission/kitchen-sensor-motion'), (garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature, 'garden3-sensor-temperature → 
-    mission/garden3-sensor-temperature'), (bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion, 'bathroom-sensor-motion → 
-    mission/bathroom-sensor-motion'), (bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature, 'bathroom-sensor-temperature → 
-    mission/bathroom-sensor-temperature'), (garage-sensor-motion → 
-    mission/garage-sensor-motion, 'garage-sensor-motion → 
-    mission/garage-sensor-motion'), (garden2-sensor-motion → 
-    mission/garden2-sensor-motion, 'garden2-sensor-motion → 
-    mission/garden2-sensor-motion')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
+    mission/main-sensor-door')}, 'transitions_with_problems': [], 'missing_tokens': 1, 'consumed_tokens': 1, 'remaining_tokens': 1, 'produced_tokens': 1}
     
 
 ### (5.1.2.2) Alignments
@@ -2455,7 +2461,7 @@ conformance_tbr(event_log_malicious_sidechannel, am_net, am_im, am_fm)
 conformance_alignment(event_log_malicious_sidechannel, am_net, am_im, am_fm)
 ```
 
-    {'alignment': [('MQTT Broker → \nmission/kitchen-sensor-temperature', '>>'), ('MQTT Broker → \nmission/kitchen-sensor-temperature', '>>'), ('MQTT Broker → \nmission/kitchen-sensor-temperature', '>>'), ('MQTT Broker → \nmission/kitchen-sensor-temperature', '>>'), ('MQTT Broker → \nmission/kitchen-sensor-temperature', '>>'), ('>>', 'main-sensor-door → \nmission/main-sensor-door')], 'cost': 60000, 'visited_states': 6, 'queued_states': 167, 'traversed_arcs': 167, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 60000}
+    {'alignment': [('MQTT Broker → \nmission/belt_circulation-sensor-temperature', '>>'), ('>>', 'test_system3-sensor-temperature → \nmission/test_system3-sensor-temperature'), ('MQTT Broker → \nmission/belt_circulation-sensor-temperature', '>>'), ('MQTT Broker → \nmission/belt_circulation-sensor-temperature', '>>'), ('MQTT Broker → \nmission/belt_circulation-sensor-temperature', '>>'), ('MQTT Broker → \nmission/belt_circulation-sensor-temperature', '>>')], 'cost': 60000, 'visited_states': 6, 'queued_states': 60, 'traversed_arcs': 60, 'lp_solved': 1, 'fitness': 0.0, 'bwc': 60000}
     
 
 ## (5.1.3) Declarative conformance checking
